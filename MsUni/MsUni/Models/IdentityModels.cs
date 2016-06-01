@@ -29,5 +29,7 @@ namespace MsUni.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<MsUni.Models.Contact> Contacts { get; set; }
     }
 }
