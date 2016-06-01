@@ -54,15 +54,15 @@ namespace MsUni
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "1705138086427085",
+               appSecret: "a19e816b9d9e09025824a80a7a19ff59");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "457525890936-08ueo4el0qcreptvrslfpg87kn4l2ekh.apps.googleusercontent.com",
+                ClientSecret = "G4WHjOXH1xgF3K5w_njYIJAc"
+            });
         }
     }
 }
