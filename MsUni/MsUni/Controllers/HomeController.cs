@@ -21,6 +21,7 @@ namespace MsUni.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         public ActionResult Contact()
         {
             ViewBag.Message = "Board Member";
