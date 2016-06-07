@@ -219,6 +219,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\IPHelper.cs" />
     <Compile Include="Migrations\201606010547499_Initial.cs" />
     <Compile Include="Migrations\201606010547499_Initial.Designer.cs">
       <DependentUpon>201606010547499_Initial.cs</DependentUpon>
@@ -227,11 +228,20 @@
     <Compile Include="Migrations\201606010620061_Initial1.Designer.cs">
       <DependentUpon>201606010620061_Initial1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606070549339_Initial2.cs" />
+    <Compile Include="Migrations\201606070549339_Initial2.Designer.cs">
+      <DependentUpon>201606070549339_Initial2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606070725227_Initial3.cs" />
+    <Compile Include="Migrations\201606070725227_Initial3.Designer.cs">
+      <DependentUpon>201606070725227_Initial3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Vote.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -302,6 +312,7 @@
     <Content Include="Views\Contacts\Edit.cshtml" />
     <Content Include="Views\Contacts\Index.cshtml" />
     <Content Include="Views\Shared\Info.cshtml" />
+    <Content Include="Views\Contacts\Vote.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -320,6 +331,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606010620061_Initial1.resx">
       <DependentUpon>201606010620061_Initial1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606070549339_Initial2.resx">
+      <DependentUpon>201606070549339_Initial2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606070725227_Initial3.resx">
+      <DependentUpon>201606070725227_Initial3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -22,5 +22,7 @@ namespace MsUni.Models
 
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+
+        public int Vote { get; set; }
     }
 }

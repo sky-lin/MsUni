@@ -31,5 +31,7 @@ namespace MsUni.Models
         }
 
         public System.Data.Entity.DbSet<MsUni.Models.Contact> Contacts { get; set; }
+
+        public System.Data.Entity.DbSet<MsUni.Models.Vote> Votes { get; set; }
     }
 }

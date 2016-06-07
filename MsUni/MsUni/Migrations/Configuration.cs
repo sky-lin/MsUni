@@ -25,9 +25,10 @@ namespace MsUni.Migrations
                 new UserStore<ApplicationUser>(context));
             var user = new ApplicationUser()
             {
-                UserName = "user1@contoso.com",
+                UserName = "wengui.lin@live.com",
+                EmailConfirmed = true,
             };
-            ir = um.Create(user, "P_assw0rd1");
+            ir = um.Create(user, "Aa123456!");
             if (ir.Succeeded == false)
                 return ir.Succeeded;
             ir = um.AddToRole(user.Id, "canEdit");
@@ -48,6 +49,7 @@ namespace MsUni.Migrations
                        Mobile = "13888888888",
                        University = "UCL",
                        Email = "debra@example.com",
+                       Vote = 0,
                    },
                     new Contact
                     {
@@ -58,6 +60,7 @@ namespace MsUni.Migrations
                         Mobile = "13888888888",
                         University = "UCL",
                         Email = "thorsten@example.com",
+                        Vote = 0,
                     },
                     new Contact
                     {
@@ -68,6 +71,7 @@ namespace MsUni.Migrations
                         Mobile = "13888888888",
                         University = "UCL",
                         Email = "yuhong@example.com",
+                        Vote = 0,
                     },
                     new Contact
                     {
@@ -78,6 +82,7 @@ namespace MsUni.Migrations
                         Mobile = "13888888888",
                         University = "UCL",
                         Email = "jon@example.com",
+                        Vote = 0,
                     },
                     new Contact
                     {
@@ -88,6 +93,7 @@ namespace MsUni.Migrations
                         Mobile = "13888888888",
                         University = "UCL",
                         Email = "diliana@example.com",
+                        Vote = 0,
                     }
                     );
         }

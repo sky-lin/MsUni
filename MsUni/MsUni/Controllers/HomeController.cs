@@ -14,6 +14,7 @@ namespace MsUni.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         public ActionResult About()
         {
             ViewBag.Message = "Ms University";
