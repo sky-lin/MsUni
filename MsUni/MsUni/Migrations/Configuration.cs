@@ -39,11 +39,10 @@ namespace MsUni.Migrations
         {
             AddUserAndRole(context);
 
-            context.Contacts.AddOrUpdate(p => p.Name,
-                   new Contact
+            context.Candidates.AddOrUpdate(p => p.Name,
+                   new Candidate
                    {
                        Name = "Debra Garcia",
-                       Address = "1234 Main St",
                        City = "Redmond",
                        Age = 20,
                        Mobile = "13888888888",
@@ -51,10 +50,9 @@ namespace MsUni.Migrations
                        Email = "debra@example.com",
                        Vote = 0,
                    },
-                    new Contact
+                    new Candidate
                     {
                         Name = "Thorsten Weinrich",
-                        Address = "5678 1st Ave W",
                         City = "Redmond",
                         Age = 20,
                         Mobile = "13888888888",
@@ -62,10 +60,9 @@ namespace MsUni.Migrations
                         Email = "thorsten@example.com",
                         Vote = 0,
                     },
-                    new Contact
+                    new Candidate
                     {
                         Name = "Yuhong Li",
-                        Address = "9012 State st",
                         City = "Redmond",
                         Age = 20,
                         Mobile = "13888888888",
@@ -73,10 +70,9 @@ namespace MsUni.Migrations
                         Email = "yuhong@example.com",
                         Vote = 0,
                     },
-                    new Contact
+                    new Candidate
                     {
                         Name = "Jon Orton",
-                        Address = "3456 Maple St",
                         City = "Redmond",
                         Age = 20,
                         Mobile = "13888888888",
@@ -84,10 +80,9 @@ namespace MsUni.Migrations
                         Email = "jon@example.com",
                         Vote = 0,
                     },
-                    new Contact
+                    new Candidate
                     {
                         Name = "Diliana Alexieva-Bosseva",
-                        Address = "7890 2nd Ave E",
                         City = "Redmond",
                         Age = 20,
                         Mobile = "13888888888",

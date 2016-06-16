@@ -77,6 +77,34 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SQLServer.SMO.12.0.2000.8\lib\Microsoft.SqlServer.ConnectionInfo.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.ConnectionInfoExtended, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SQLServer.SMO.12.0.2000.8\lib\Microsoft.SqlServer.ConnectionInfoExtended.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Management.Sdk.Sfc, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SQLServer.SMO.12.0.2000.8\lib\Microsoft.SqlServer.Management.Sdk.Sfc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Smo, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SQLServer.SMO.12.0.2000.8\lib\Microsoft.SqlServer.Smo.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.SmoExtended, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SQLServer.SMO.12.0.2000.8\lib\Microsoft.SqlServer.SmoExtended.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.SqlClrProvider, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SQLServer.SMO.12.0.2000.8\lib\Microsoft.SqlServer.SqlClrProvider.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.SqlEnum, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SQLServer.SMO.12.0.2000.8\lib\Microsoft.SqlServer.SqlEnum.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -213,8 +241,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ContactsController.cs" />
+    <Compile Include="Controllers\CandidatesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImagesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -236,11 +265,32 @@
     <Compile Include="Migrations\201606070725227_Initial3.Designer.cs">
       <DependentUpon>201606070725227_Initial3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606080548124_Initial4.cs" />
+    <Compile Include="Migrations\201606080548124_Initial4.Designer.cs">
+      <DependentUpon>201606080548124_Initial4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606080805545_initial5.cs" />
+    <Compile Include="Migrations\201606080805545_initial5.Designer.cs">
+      <DependentUpon>201606080805545_initial5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606091046189_initial6.cs" />
+    <Compile Include="Migrations\201606091046189_initial6.Designer.cs">
+      <DependentUpon>201606091046189_initial6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606140513037_initial7.cs" />
+    <Compile Include="Migrations\201606140513037_initial7.Designer.cs">
+      <DependentUpon>201606140513037_initial7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606160800041_initial71.cs" />
+    <Compile Include="Migrations\201606160800041_initial71.Designer.cs">
+      <DependentUpon>201606160800041_initial71.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\Candidate.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Image.cs" />
     <Compile Include="Models\Vote.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -252,6 +302,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\default.jpg" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -306,13 +357,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Contacts\Create.cshtml" />
-    <Content Include="Views\Contacts\Delete.cshtml" />
-    <Content Include="Views\Contacts\Details.cshtml" />
-    <Content Include="Views\Contacts\Edit.cshtml" />
-    <Content Include="Views\Contacts\Index.cshtml" />
     <Content Include="Views\Shared\Info.cshtml" />
-    <Content Include="Views\Contacts\Vote.cshtml" />
+    <Content Include="Views\Candidates\Create.cshtml" />
+    <Content Include="Views\Candidates\Delete.cshtml" />
+    <Content Include="Views\Candidates\Details.cshtml" />
+    <Content Include="Views\Candidates\Edit.cshtml" />
+    <Content Include="Views\Candidates\Index.cshtml" />
+    <Content Include="Views\Candidates\Vote.cshtml" />
+    <Content Include="Views\Candidates\Apply.cshtml" />
+    <Content Include="Views\Images\Details.cshtml" />
+    <Content Include="Views\Candidates\UploadImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -337,6 +391,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606070725227_Initial3.resx">
       <DependentUpon>201606070725227_Initial3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606080548124_Initial4.resx">
+      <DependentUpon>201606080548124_Initial4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606080805545_initial5.resx">
+      <DependentUpon>201606080805545_initial5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606091046189_initial6.resx">
+      <DependentUpon>201606091046189_initial6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606140513037_initial7.resx">
+      <DependentUpon>201606140513037_initial7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606160800041_initial71.resx">
+      <DependentUpon>201606160800041_initial71.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

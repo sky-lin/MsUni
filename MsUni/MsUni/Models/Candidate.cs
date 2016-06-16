@@ -1,17 +1,17 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Data;
 using System.Globalization;
+
 
 namespace MsUni.Models
 {
-    public class Contact
+    public class Candidate
     {
-        public int ContactId { get; set; }
+        public int CandidateId { get; set; }
 
         public string Name { get; set; }
 
         public short Age { get; set; }
-
-        public string Address { get; set; }
 
         public string City { get; set; }
 
@@ -23,6 +23,10 @@ namespace MsUni.Models
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
+        public int CandidateImageId { get; set; }
+
         public int Vote { get; set; }
+
+        public bool Approved { get; set; }
     }
 }

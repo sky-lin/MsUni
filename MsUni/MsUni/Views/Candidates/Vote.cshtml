@@ -1,13 +1,13 @@
-﻿@model MsUni.Models.Contact
+﻿@model MsUni.Models.Candidate
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Vote";
 }
 
-<h2>Details</h2>
+<h2>Vote</h2>
 
+<h3>Are you sure you want to vote @Html.DisplayFor(model => model.Name)?</h3>
 <div>
-    <h4>Contact</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -19,11 +19,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Address)
+            @Html.DisplayNameFor(model => model.Age)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Address)
+            @Html.DisplayFor(model => model.Age)
         </dd>
 
         <dt>
@@ -32,14 +32,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.City)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Age)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Age)
         </dd>
 
         <dt>
@@ -74,9 +66,23 @@
             @Html.DisplayFor(model => model.Vote)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Approved)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Approved)
+        </dd>
+
     </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Vote" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ContactId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

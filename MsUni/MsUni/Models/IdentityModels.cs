@@ -30,8 +30,10 @@ namespace MsUni.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<MsUni.Models.Contact> Contacts { get; set; }
-
         public System.Data.Entity.DbSet<MsUni.Models.Vote> Votes { get; set; }
+
+        public System.Data.Entity.DbSet<MsUni.Models.Candidate> Candidates { get; set; }
+
+        public System.Data.Entity.DbSet<MsUni.Models.Image> Images { get; set; }
     }
 }
