@@ -18,6 +18,10 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Ms.University", "Index", "Candidates", new { area = "" }, new { @class = "navbar-brand" })
+                @if (Request.IsAuthenticated && Roles.IsUserInRole("CanEdit"))
+                {
+                    @Html.ActionLink("Applicants", "ListAll", "Candidates", new { area = "" }, new { @class = "navbar-brand" })
+                }
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">

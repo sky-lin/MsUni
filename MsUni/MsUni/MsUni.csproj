@@ -367,6 +367,7 @@
     <Content Include="Views\Candidates\Apply.cshtml" />
     <Content Include="Views\Images\Details.cshtml" />
     <Content Include="Views\Candidates\UploadImage.cshtml" />
+    <Content Include="Views\Candidates\ListAll.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

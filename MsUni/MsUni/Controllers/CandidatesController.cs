@@ -19,6 +19,12 @@ namespace MsUni.Controllers
         // GET: Candidates
         public ActionResult Index()
         {
+            return View(db.Candidates.Where(x=>x.Approved));
+        }
+
+        // GET: Candidates/ListAll
+        public ActionResult ListAll()
+        {
             return View(db.Candidates.ToList());
         }
 
