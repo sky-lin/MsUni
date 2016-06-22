@@ -43,6 +43,14 @@
             </div>
 
             <div class="form-group">
+                @Html.LabelFor(model => model.Job, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Job, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Job, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
                 @Html.LabelFor(model => model.Mobile, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control" } })
@@ -58,14 +66,6 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
         </form>
 
         @using (Html.BeginForm("Upload", "Candidates", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -76,6 +76,8 @@
                 <div class="col-md-10">
                     <input type="file" name="test" />
                     <p>
+                        <font size="1"> Please upload < 1Mb .JPG file. Better in 3:4(Width:Height) format! </font>
+                        <br/>
                         <input type="submit" value="Upload" name="type" />
                     </p>
                     @using (Html.BeginForm("GetImageByUser", "Candidates", FormMethod.Get, new { enctype = "multipart/form-data" }))
@@ -109,7 +111,6 @@
         sessionStorage.setItem("City", $('#City').val());
         sessionStorage.setItem("Mobile", $('#Mobile').val());
         sessionStorage.setItem("University", $('#University').val());
-        sessionStorage.setItem("Email", $('#Email').val());
     }
     </script>
 
@@ -125,8 +126,6 @@
         if (Mobile !== null) $('#Mobile').val(Mobile);
         var University = sessionStorage.getItem("University");
         if (University !== null) $('#University').val(University);
-        var Email = sessionStorage.getItem("Email");
-        if (Email !== null) $('#Email').val(Email);
     }
     </script>
 

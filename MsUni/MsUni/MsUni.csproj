@@ -285,6 +285,14 @@
     <Compile Include="Migrations\201606160800041_initial71.Designer.cs">
       <DependentUpon>201606160800041_initial71.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606220536080_initial8.cs" />
+    <Compile Include="Migrations\201606220536080_initial8.Designer.cs">
+      <DependentUpon>201606220536080_initial8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606220607024_initial9.cs" />
+    <Compile Include="Migrations\201606220607024_initial9.Designer.cs">
+      <DependentUpon>201606220607024_initial9.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Candidate.cs" />
@@ -366,7 +374,6 @@
     <Content Include="Views\Candidates\Vote.cshtml" />
     <Content Include="Views\Candidates\Apply.cshtml" />
     <Content Include="Views\Images\Details.cshtml" />
-    <Content Include="Views\Candidates\UploadImage.cshtml" />
     <Content Include="Views\Candidates\ListAll.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -407,6 +414,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606160800041_initial71.resx">
       <DependentUpon>201606160800041_initial71.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606220536080_initial8.resx">
+      <DependentUpon>201606220536080_initial8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606220607024_initial9.resx">
+      <DependentUpon>201606220607024_initial9.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

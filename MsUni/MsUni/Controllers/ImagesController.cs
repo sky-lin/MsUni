@@ -49,7 +49,6 @@ namespace MsUni.Controllers
         }
 
         // GET: Images/Create
-        [AllowAnonymous]
         public ActionResult Create()
         {
             return View();
@@ -59,7 +58,6 @@ namespace MsUni.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [AllowAnonymous]
         public ActionResult Create(string type)
         {
             try

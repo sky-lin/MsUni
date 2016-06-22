@@ -9,15 +9,20 @@ namespace MsUni.Models
     {
         public int CandidateId { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
         public short Age { get; set; }
 
         public string City { get; set; }
 
+        public string Job { get; set; }
+
+        [Required]
         [DataType(DataType.PhoneNumber)]
         public string Mobile { get; set; }
 
+        [Required]
         public string University { get; set; }
 
         [DataType(DataType.EmailAddress)]

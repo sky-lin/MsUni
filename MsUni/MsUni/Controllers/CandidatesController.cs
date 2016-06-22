@@ -16,6 +16,7 @@ namespace MsUni.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        [AllowAnonymous]
         // GET: Candidates
         public ActionResult Index()
         {
@@ -28,6 +29,7 @@ namespace MsUni.Controllers
             return View(db.Candidates.ToList());
         }
 
+        [AllowAnonymous]
         // GET: Candidates/Details/5
         public ActionResult Details(int? id)
         {
@@ -54,7 +56,7 @@ namespace MsUni.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CandidateId,Name,Age,City,Mobile,University,Email,CandidateImage,Vote,Approved")] Candidate candidate)
+        public ActionResult Create([Bind(Include = "CandidateId,Name,Age,City,Job,Mobile,University,Email,CandidateImage,Vote,Approved")] Candidate candidate)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +88,7 @@ namespace MsUni.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CandidateId,Name,Age,City,Mobile,University,Email,CandidateImage,Vote,Approved")] Candidate candidate)
+        public ActionResult Edit([Bind(Include = "CandidateId,Name,Age,City,Job,Mobile,University,Email,CandidateImageId,Vote,Approved")] Candidate candidate)
         {
             if (ModelState.IsValid)
             {
@@ -123,6 +125,7 @@ namespace MsUni.Controllers
             return RedirectToAction("Index");
         }
 
+        [AllowAnonymous]
         // GET: Contacts/Vote/5
         public ActionResult Vote(int? id)
         {
@@ -144,6 +147,7 @@ namespace MsUni.Controllers
             return View(contact);
         }
 
+        [AllowAnonymous]
         // POST: Contacts/Vote/5
         [HttpPost, ActionName("Vote")]
         [ValidateAntiForgeryToken]
@@ -165,6 +169,14 @@ namespace MsUni.Controllers
         // GET: Candidates/Apply
         public ActionResult Apply()
         {
+            bool userAlreadyApplied = db.Candidates.Any(x => string.Equals(x.Email, User.Identity.Name));
+
+            if (userAlreadyApplied)
+            {
+                ViewBag.errorMessage = "You Have Already Applied!";
+                return View("error");
+            }
+
             return View();
         }
 
@@ -173,17 +185,10 @@ namespace MsUni.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Apply([Bind(Include = "CandidateId,Name,Age,City,Mobile,University,Email")] Candidate candidate)
+        public ActionResult Apply([Bind(Include = "CandidateId,Name,Age,City,Job,Mobile,University,Email")] Candidate candidate)
         {
             if (ModelState.IsValid)
             {
-                bool userAlreadyApplied = db.Candidates.Any(x => string.Equals(x.Email, User.Identity.Name));
-
-                if (userAlreadyApplied) {
-                    ViewBag.errorMessage = "You Have Already Applied!";
-                    return View("error");
-                }
-
                 bool picAlreadyExist = db.Images.Any(x => string.Equals(x.UserId, User.Identity.Name)
                     && string.Equals(x.ImageType, "Upload"));
 
@@ -193,10 +198,14 @@ namespace MsUni.Controllers
                         && string.Equals(x.ImageType, "Upload"));
 
                     candidate.CandidateImageId = imageDB.ImageId;
+                    candidate.Email = User.Identity.Name;
 
                     db.Candidates.Add(candidate);
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+
+                    ViewBag.Title = "Successfully applied!";
+                    ViewBag.Message = "You will show up as an candidate when approved by the Ms.University committee!";
+                    return View("Info");
                 }
                 else
                 {
@@ -220,6 +229,11 @@ namespace MsUni.Controllers
                     return View("error");
                 }
                 byte[] imageSize = new byte[file.ContentLength];
+                if (file.ContentLength > 1048576)
+                {
+                    ViewBag.errorMessage = "image size should < 1 MB!";
+                    return View("error");
+                }
                 file.InputStream.Read(imageSize, 0, (int)file.ContentLength);
 
                 bool picAlreadyExist = db.Images.Any(x => string.Equals(x.UserId, User.Identity.Name)
@@ -256,6 +270,41 @@ namespace MsUni.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult UploadUsingId(string type)
+        {
+            try
+            {
+                HttpPostedFileBase file = Request.Files[0];
+                string id = Request.Files.Keys[0];
+                if (file.ContentType != "image/jpeg")
+                {
+                    ViewBag.errorMessage = "Please upload the correct image with jpeg type!";
+                    return View("error");
+                }
+                byte[] imageSize = new byte[file.ContentLength];
+                file.InputStream.Read(imageSize, 0, (int)file.ContentLength);
+
+                var image = db.Images.Find(int.Parse(id));
+
+                    image.ImageData = imageSize;
+                    if (ModelState.IsValid)
+                    {
+                        db.Entry(image).State = EntityState.Modified;
+                        db.SaveChanges();
+                    }
+
+                int candidateId = int.Parse(Request.UrlReferrer.Segments[Request.UrlReferrer.Segments.Count() - 1]);
+
+                return RedirectToAction("Edit", new { id = candidateId });
+            }
+            catch
+            {
+                ViewBag.errorMessage = "Error happened when uploading picture!";
+                return View("error");
+            }
+        }
+
         public ActionResult GetImageByUser(string type)
         {
             if (string.IsNullOrEmpty(User.Identity.Name))
@@ -281,6 +330,7 @@ namespace MsUni.Controllers
             }
         }
 
+        [AllowAnonymous]
         public ActionResult GetThumbNailImageByImageId(int imageId)
         {
             MsUni.Models.Image image = db.Images.Find(imageId);

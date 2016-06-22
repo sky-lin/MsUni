@@ -18,13 +18,15 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Ms.University", "Index", "Candidates", new { area = "" }, new { @class = "navbar-brand" })
-                @if (Request.IsAuthenticated && Roles.IsUserInRole("CanEdit"))
-                {
-                    @Html.ActionLink("Applicants", "ListAll", "Candidates", new { area = "" }, new { @class = "navbar-brand" })
-                }
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <li>
+                        @if (Request.IsAuthenticated && string.Equals(User.Identity.Name,"linwengui1988@hotmail.com"))
+                        {
+                            @Html.ActionLink("Applicants", "ListAll", "Candidates")
+                        }
+                    </li>
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>

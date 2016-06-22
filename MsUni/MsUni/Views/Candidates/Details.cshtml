@@ -19,14 +19,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Age)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Age)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.City)
         </dt>
 
@@ -35,11 +27,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Mobile)
+            @Html.DisplayNameFor(model => model.Job)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Mobile)
+            @Html.DisplayFor(model => model.Job)
         </dd>
 
         <dt>
@@ -51,14 +43,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.Vote)
         </dt>
 
@@ -67,16 +51,15 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Approved)
+           Image:
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Approved)
+            <img src="@Url.Action("GetImage", "Images", new { id = @Html.DisplayFor(model => model.CandidateImageId)})" /> 
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CandidateId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
